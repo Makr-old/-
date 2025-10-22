@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>点击显示坐标（全局）</title>
+    <style>
+        #coordDisplay {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="coordDisplay">点击页面任意位置查看坐标</div>
+
+    <script>
+        // 获取显示坐标的元素
+        const coordDisplay = document.getElementById('coordDisplay');
+        
+        // 给整个文档添加点击事件监听器
+        document.addEventListener('click', function(e) { 
+            // e.clientX/e.clientY：相对于浏览器可视区域的坐标
+            // e.pageX/e.pageY：相对于整个文档（含滚动部分）的坐标
+            const clientCoord = `可视区域坐标：X=${e.clientX}, Y=${e.clientY}`;
+            const pageCoord = `文档坐标：X=${e.pageX}, Y=${e.pageY}`;
+            
+            // 显示坐标
+            coordDisplay.innerHTML = `${clientCoord}<br>${pageCoord}`;
+        });
+    </script>
+</body>
+</html>
